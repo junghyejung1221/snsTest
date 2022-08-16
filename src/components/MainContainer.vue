@@ -14,11 +14,8 @@
   <div v-if="step == 1">
     <div class="upload-image" :style="{backgroundImage : `url(${ImageURL})`}"></div>
     <div class="filters">
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
+        <FilterBox :ImageURL="ImageURL" v-for="a in FiterName" :key="a"></FilterBox>
+      ImageURL
     </div>
   </div>
 
@@ -41,6 +38,7 @@
 <script>
 
 import Post from './MainPost';
+import FilterBox from '../components/FilterBox';
 
 import axios from 'axios' ;
 
@@ -49,12 +47,16 @@ export default{
     return {
       //더보기 카운트
       count : 0,
-      
+      FiterName: [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+                  "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+                  "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+
 
     }
   },
   components: {
-    Post
+    Post,
+    FilterBox
   },
   props: {
     userdata : Array,
