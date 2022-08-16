@@ -1,20 +1,24 @@
 <template>
-  <div class="filter-item" :style="`background-image:url(${ImageURL})`"></div> 
+  <div :class= "`${filter} filter-item`" :style="`background-image:url(${ImageURL})`"></div> 
 </template>
 
 <script>
+import { interfaceDeclaration } from '@babel/types';
+
 export default {
   name: 'FilterBox',
    data(){
     return {
-      
+           
 
 
     }
   }
   ,
   props: {
-    ImageURL : String
+    ImageURL : String,
+    FiterName : Array,
+    filter : String,
   }
   
 }

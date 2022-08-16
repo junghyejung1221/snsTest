@@ -5,7 +5,7 @@
 <div>  
   <!-- 반복문 userdata의 개수만큼 반복 -->
   <div v-if="step == 0">
-  <Post :userdata="userdata[i]" v-for="(a,i) in userdata" :key="i"/>
+  <Post :userdata="userdata[i]" v-for="(a,i) in userdata" :key="i"/> {a}
   <button @click="more" >더보기</button>
 
   </div>
@@ -13,9 +13,9 @@
   <!-- 필터선택페이지 -->
   <div v-if="step == 1">
     <div class="upload-image" :style="{backgroundImage : `url(${ImageURL})`}"></div>
-    <div class="filters">
-        <FilterBox :ImageURL="ImageURL" v-for="a in FiterName" :key="a"></FilterBox>
-      ImageURL
+    <div class="filters ">
+        <FilterBox :ImageURL="ImageURL" v-for="filter in FiterName" :key="filter"   :FiterName="FiterName" :filter="filter"></FilterBox>
+    
     </div>
   </div>
 
