@@ -5,12 +5,14 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step ==1" @click="step++">Next</li>
+      <li v-if="step ==2" @click="publish">발행</li>
+
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div> 
 
-  <Container :ImageURL="ImageURL" :userdata= "userdata" :step="step"/>
+  <Container @write="writePost = $event" :ImageURL="ImageURL" :userdata= "userdata" :step="step"/>
 
 
 
@@ -37,6 +39,7 @@ import HelloWorld from './components/PostComponent'
 import Container from './components/MainContainer'
 import postdata from './assets/postdata'
 import axios from 'axios'   //서버에서 get등 요청하기 위해  axios.get() 이렇게 요청하면 된다. 
+import { throwStatement } from '@babel/types'
                             //axios.post('URL',{name: 'kim'},then().catch((err)=>{err}))
 export default {
   name: 'App',
@@ -49,8 +52,10 @@ export default {
       step : 0,
 
       //사진url
+      ImageURL : " ",
 
-      ImageURL : " "
+      //작성글받아온거
+      writePost: " "
       }
   },
   components: {
@@ -62,6 +67,21 @@ export default {
       let url = URL.createObjectURL(ImgFile[0]);
       this.ImageURL = url;
       this.step =1;
+    },
+    publish(e){
+      let mypost = {
+      name: "Kim Hyun",
+      userImage: "https://placeimg.com/100/100/arch",
+      postImage: this.ImageURL,
+      likes: 36,
+      date: "May 15",
+      liked: false,
+      content: this.writePost,
+      filter: "perpetua"
+    };
+      this.userdata.unshift(mypost);
+      console.log(this.userdata);
+      this.step =0;
     }
   }
 }

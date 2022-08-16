@@ -24,9 +24,9 @@
 
   <!-- 글작성페이지 -->
   <div v-if="step == 2">
-    <div class="upload-image"></div>
+    <div class="upload-image" :style="{backgroundImage : `url(${ImageURL})`}"></div>
     <div class="write">
-      <textarea class="write-box">write!</textarea>
+      <textarea  @input="$emit('write', $event.target.value)"  class="write-box">write!</textarea>
     </div>
   </div>
 
@@ -49,6 +49,8 @@ export default{
     return {
       //더보기 카운트
       count : 0,
+      
+
     }
   },
   components: {
