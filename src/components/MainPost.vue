@@ -2,12 +2,12 @@
 <div class="post">
     <div class="post-header">
       <div class="profile" :style="{backgroundImage : `url(${userdata.userImage})`}"></div>
-      <span class="profile-name">{{userdata.name}}</span>
+      <span class="profile-name">{{userdata.name}} {{$store.state.storedata[0].name}}</span>
     </div>
-    <div class="post-body" :style="{backgroundImage : `url(${userdata.postImage})`}"></div>
+    <div class="post-body" :style="{backgroundImage : `url(${userdata.postImage})`}"  @click="$store.commit('AddLike')"></div>
     <div class="post-content">
-      <p>{{userdata.likes}}</p>
-      <p><strong>{{userdata.name}}</strong>{{userdata.content}}</p>
+      <p>likes {{$store.state.likes}} </p>
+      <p><strong></strong>{{userdata.content}}</p>
       <p class="date">{{userdata.date}}</p>
     </div>
 </div> 
@@ -18,6 +18,7 @@
 export default{
   props: {
     userdata : Object,
+    // storedata : Array,
   }
 }
 </script>

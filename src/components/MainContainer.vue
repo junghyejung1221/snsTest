@@ -6,6 +6,7 @@
         <!-- 반복문 userdata의 개수만큼 반복 -->
         <div v-if="step == 0">
         <Post :userdata="userdata[i]" v-for="(a,i) in userdata" :key="i"/>
+        <Test_Post :storeData="storeData[i]" v-for="(a,i) in storeData" :key="i"/>
         <button @click="more" >더보기</button>
 
         </div>
@@ -40,9 +41,12 @@
 <script>
 
 import Post from './MainPost';
-import FilterBox from '../components/FilterBox';
+import Test_Post from './TestPost';
 
+import FilterBox from '../components/FilterBox';
+import store from '../assets/stroe'
 import axios from 'axios' ;
+import TestPost from './TestPost.vue';
 
 export default{
   data(){
@@ -52,14 +56,16 @@ export default{
       FiterName: [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
                   "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
                   "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+      storeData: store.state.storedata
 
 
     }
   },
   components: {
     Post,
-    FilterBox
-  },
+    FilterBox,
+    Test_Post
+},
   props: {
     userdata : Array,
     step : Number,  //step1이면 페이지 step2이면 페이지 step3이면 페이지

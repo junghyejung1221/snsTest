@@ -13,9 +13,9 @@
   </div> 
 
 <h4>
-  {{$store.state.name}}
+  안녕 {{$store.state.storedata[0].name}} {{$store.state.age}}
 </h4>
-<button @click="$store.commit('NameChange')"> 버튼 </button>
+<button @click="$store.commit('AddAge')"> 버튼 </button>
 
   <Container @write="writePost = $event" :ImageURL="ImageURL" :userdata= "userdata" :step="step"/>
 
@@ -61,7 +61,7 @@ export default {
       ImageURL : " ",
 
       //작성글받아온거
-      writePost: " "
+      writePost: " ",
       }
   },
   components: {
