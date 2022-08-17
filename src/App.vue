@@ -12,6 +12,11 @@
     <img src="./assets/logo.png" class="logo" />
   </div> 
 
+<h4>
+  {{$store.state.name}}
+</h4>
+<button @click="$store.commit('NameChange')"> 버튼 </button>
+
   <Container @write="writePost = $event" :ImageURL="ImageURL" :userdata= "userdata" :step="step"/>
 
 
@@ -40,6 +45,7 @@ import Container from './components/MainContainer'
 import postdata from './assets/postdata'
 import axios from 'axios'   //서버에서 get등 요청하기 위해  axios.get() 이렇게 요청하면 된다. 
 import { throwStatement } from '@babel/types'
+import FilterBox from './components/FilterBox.vue'
                             //axios.post('URL',{name: 'kim'},then().catch((err)=>{err}))
 export default {
   name: 'App',
@@ -59,8 +65,10 @@ export default {
       }
   },
   components: {
-    HelloWorld,Container
-  },
+    HelloWorld,
+    Container,
+    FilterBox
+},
   methods: {
     imageUpload(e){
       let ImgFile = e.target.files;
